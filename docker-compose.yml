@@ -1,0 +1,21 @@
+version: '3'
+services:
+  go:
+    build: .
+    command: ./start.sh
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - .:/go/src/app
+    ports:
+      - 8080:8080
+    networks:
+      - innernet
+
+networks:
+  innernet:
+    driver: bridge
+    ipam:
+        driver: default
+        config:
+            - subnet: 172.68.6.128/28
