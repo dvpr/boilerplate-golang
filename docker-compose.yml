@@ -2,7 +2,10 @@ version: '3'
 services:
   go:
     build: .
-    command: ./start.sh
+    tty: true
+    privileged: true
+    stdin_open: true
+    entrypoint: ["sh"]
     environment:
       - TZ=Asia/Shanghai
     volumes:
